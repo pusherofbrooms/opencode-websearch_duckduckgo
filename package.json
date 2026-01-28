@@ -1,0 +1,9 @@
+{
+  "name": "opencode-custom-tools",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "cheerio": "^1.2.0",
+    "node-fetch": "^3.3.2"
+  }
+}
