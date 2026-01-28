@@ -9,7 +9,7 @@ Custom DuckDuckGo web search tool integration for OpenCode. This package exposes
 
 ## Install
 
-1) Copy these files into `~/.opencode/tools` or `~/.config/opencode/tools`.
+1) Copy `websearch_duckduckgo.ts` and `package.json` into `~/.opencode/tools` or `~/.config/opencode/tools`.
 
 2) Install dependencies in the tools directory:
 
