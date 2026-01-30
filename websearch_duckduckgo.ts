@@ -23,9 +23,10 @@ export default tool({
     const $ = cheerio.load(text);
 
     const results: { title: string; url: string; snippet: string }[] = [];
+    const limit = args.maxResults ?? 5;
 
     $("div.result__body").each((i, el) => {
-      if (args.maxResults && results.length >= args.maxResults) return;
+      if (results.length >= limit) return;
       const title = $(el).find("a.result__a").text().trim();
       const link = $(el).find("a.result__a").attr("href") || "";
       const snippet = $(el).find("a.result__snippet").text().trim();
@@ -35,6 +36,15 @@ export default tool({
       }
     });
 
-    return results;
+    if (results.length === 0) {
+      return "No results.";
+    }
+
+    return results
+      .map((result) => {
+        const snippet = result.snippet ? `\n${result.snippet}` : "";
+        return `${result.title} — ${result.url}${snippet}`;
+      })
+      .join("\n\n");
   }
 });
